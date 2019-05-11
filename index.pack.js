@@ -1084,7 +1084,7 @@ var App = function (_React$Component) {
 
             var chatManager = new _reactNative.ChatManager({
                 instanceLocator: _config.instanceLocator,
-                userId: 'ckTest1',
+                userId: 'ckTestNoRooms',
                 tokenProvider: new _reactNative.TokenProvider({ url: _config.tokenUrl })
             });
 
@@ -1118,8 +1118,8 @@ var App = function (_React$Component) {
                 });
                 _this3.getRooms();
             }).catch(function (err) {
-                return 'error on subscribing to room: ';
-            }, err);
+                return console.log('error on subscribing to room: ', err);
+            });
         }
     }, {
         key: 'getRooms',
@@ -1150,7 +1150,8 @@ var App = function (_React$Component) {
                 'div',
                 { className: 'app' },
                 _react2.default.createElement(_RoomList2.default, { subscribeToRoom: this.subscribeToRoom,
-                    rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)) }),
+                    rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)),
+                    roomId: this.state.roomId }),
                 _react2.default.createElement(_MessageList2.default, { messages: this.state.messages }),
                 _react2.default.createElement(_SendMessageForm2.default, { sendMessage: this.sendMessage })
             );
@@ -21910,6 +21911,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -21930,7 +21933,9 @@ var RoomList = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            console.log(this.props.rooms);
+            var orderedRooms = [].concat(_toConsumableArray(this.props.rooms)).sort(function (a, b) {
+                return a.id - b.id;
+            });
             return _react2.default.createElement(
                 "div",
                 { className: "rooms-list" },
@@ -21942,10 +21947,11 @@ var RoomList = function (_React$Component) {
                         null,
                         "Rooms"
                     ),
-                    this.props.rooms.map(function (room) {
+                    orderedRooms.map(function (room) {
+                        var active = _this2.props.roomId === room.id ? "active" : "";
                         return _react2.default.createElement(
                             "li",
-                            { key: room.id, className: "room" },
+                            { key: room.id, className: "room " + active },
                             _react2.default.createElement(
                                 "a",
                                 { onClick: function onClick() {

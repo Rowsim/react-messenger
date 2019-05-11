@@ -24,7 +24,7 @@ class App extends React.Component {
     componentDidMount() {
         const chatManager = new ChatManager({
             instanceLocator,
-            userId: 'ckTest1',
+            userId: 'ckTestNoRooms',
             tokenProvider: new TokenProvider({ url: tokenUrl })
         })
 
@@ -53,7 +53,7 @@ class App extends React.Component {
                 roomId: room.id
             })
             this.getRooms()
-        }).catch(err => 'error on subscribing to room: ', err)
+        }).catch(err => console.log('error on subscribing to room: ', err))
     }
 
     getRooms() {
@@ -77,7 +77,8 @@ class App extends React.Component {
         return (
             <div className="app">
                 <RoomList subscribeToRoom={this.subscribeToRoom}
-                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
+                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                    roomId={this.state.roomId} />
                 <MessageList messages={this.state.messages} />
                 <SendMessageForm sendMessage={this.sendMessage} />
             </div>
