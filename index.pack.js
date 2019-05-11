@@ -1063,6 +1063,8 @@ var App = function (_React$Component) {
         _this.state = {
             messages: []
         };
+
+        _this.sendMessage = _this.sendMessage.bind(_this);
         return _this;
     }
 
@@ -1080,7 +1082,8 @@ var App = function (_React$Component) {
             chatManager.connect().then(function (currentUser) {
                 console.log('Successful connection', currentUser);
 
-                currentUser.subscribeToRoomMultipart({
+                _this2.currentUser = currentUser;
+                _this2.currentUser.subscribeToRoomMultipart({
                     roomId: '19431228',
                     hooks: {
                         onMessage: function onMessage(message) {
@@ -1096,13 +1099,21 @@ var App = function (_React$Component) {
             });
         }
     }, {
+        key: 'sendMessage',
+        value: function sendMessage(text) {
+            this.currentUser.sendMessage({
+                text: text,
+                roomId: '19431228'
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 { className: 'app' },
                 _react2.default.createElement(_MessageList2.default, { messages: this.state.messages }),
-                _react2.default.createElement(_SendMessageForm2.default, null)
+                _react2.default.createElement(_SendMessageForm2.default, { sendMessage: this.sendMessage })
             );
         }
     }]);
@@ -21815,7 +21826,10 @@ var SendMessageForm = function (_React$Component) {
         key: 'handleSubmit',
         value: function handleSubmit(e) {
             e.preventDefault();
-            console.log(this.state.message);
+            this.props.sendMessage(this.state.message);
+            this.setState({
+                message: ''
+            });
         }
     }, {
         key: 'render',
