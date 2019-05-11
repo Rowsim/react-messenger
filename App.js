@@ -4,6 +4,7 @@ import { tokenUrl, instanceLocator } from './config'
 import MessageList from './components/message/MessageList'
 import SendMessageForm from './components/message/SendMessageForm';
 import RoomList from './components/room/RoomList';
+import NewRoomForm from './components/room/NewRoomForm';
 
 class App extends React.Component {
 
@@ -19,6 +20,7 @@ class App extends React.Component {
         this.sendMessage = this.sendMessage.bind(this)
         this.subscribeToRoom = this.subscribeToRoom.bind(this)
         this.getRooms = this.getRooms.bind(this)
+        this.createRoom = this.createRoom.bind(this)
     }
 
     componentDidMount() {
@@ -73,14 +75,25 @@ class App extends React.Component {
         })
     }
 
+    createRoom(name) {
+        this.currentUser.createRoom({
+            name
+        }).then(room => {
+            this.subscribeToRoom(room.id)
+        }).catch(err => console.log('Error on create room', err))
+    }
+
     render() {
         return (
             <div className="app">
                 <RoomList subscribeToRoom={this.subscribeToRoom}
                     rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
                     roomId={this.state.roomId} />
-                <MessageList messages={this.state.messages} />
-                <SendMessageForm sendMessage={this.sendMessage} />
+                <MessageList messages={this.state.messages}
+                    roomId={this.state.roomId} />
+                <SendMessageForm disabled={!this.state.roomId} 
+                sendMessage={this.sendMessage} />
+                <NewRoomForm createRoom={this.createRoom} />
             </div>
         );
     }

@@ -1046,6 +1046,10 @@ var _RoomList = __webpack_require__(42);
 
 var _RoomList2 = _interopRequireDefault(_RoomList);
 
+var _NewRoomForm = __webpack_require__(43);
+
+var _NewRoomForm2 = _interopRequireDefault(_NewRoomForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -1074,6 +1078,7 @@ var App = function (_React$Component) {
         _this.sendMessage = _this.sendMessage.bind(_this);
         _this.subscribeToRoom = _this.subscribeToRoom.bind(_this);
         _this.getRooms = _this.getRooms.bind(_this);
+        _this.createRoom = _this.createRoom.bind(_this);
         return _this;
     }
 
@@ -1144,6 +1149,19 @@ var App = function (_React$Component) {
             });
         }
     }, {
+        key: 'createRoom',
+        value: function createRoom(name) {
+            var _this5 = this;
+
+            this.currentUser.createRoom({
+                name: name
+            }).then(function (room) {
+                _this5.subscribeToRoom(room.id);
+            }).catch(function (err) {
+                return console.log('Error on create room', err);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -1152,8 +1170,11 @@ var App = function (_React$Component) {
                 _react2.default.createElement(_RoomList2.default, { subscribeToRoom: this.subscribeToRoom,
                     rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)),
                     roomId: this.state.roomId }),
-                _react2.default.createElement(_MessageList2.default, { messages: this.state.messages }),
-                _react2.default.createElement(_SendMessageForm2.default, { sendMessage: this.sendMessage })
+                _react2.default.createElement(_MessageList2.default, { messages: this.state.messages,
+                    roomId: this.state.roomId }),
+                _react2.default.createElement(_SendMessageForm2.default, { disabled: !this.state.roomId,
+                    sendMessage: this.sendMessage }),
+                _react2.default.createElement(_NewRoomForm2.default, { createRoom: this.createRoom })
             );
         }
     }]);
@@ -1283,6 +1304,17 @@ var MessageList = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            if (!this.props.roomId) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'message-list' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'join-room' },
+                        '\u2190 Join a room!'
+                    )
+                );
+            }
             return _react2.default.createElement(
                 'div',
                 { className: 'message-list' },
@@ -21897,6 +21929,7 @@ var SendMessageForm = function (_React$Component) {
                 { className: 'send-message-form',
                     onSubmit: this.handleSubmit },
                 _react2.default.createElement('input', {
+                    disabled: this.props.disabled,
                     onChange: this.handleChange,
                     value: this.state.message,
                     placeholder: 'Type something',
@@ -21990,6 +22023,92 @@ var RoomList = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = RoomList;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewRoomForm = function (_React$Component) {
+    _inherits(NewRoomForm, _React$Component);
+
+    function NewRoomForm() {
+        _classCallCheck(this, NewRoomForm);
+
+        var _this = _possibleConstructorReturn(this, (NewRoomForm.__proto__ || Object.getPrototypeOf(NewRoomForm)).call(this));
+
+        _this.state = {
+            roomName: ''
+        };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
+    }
+
+    _createClass(NewRoomForm, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.setState({
+                roomName: e.target.value
+            });
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(e) {
+            e.preventDefault;
+            this.props.createRoom(this.state.roomName);
+            this.setState({ roomName: '' });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'new-room-form' },
+                _react2.default.createElement(
+                    'form',
+                    { onSubmit: this.handleSubmit },
+                    _react2.default.createElement('input', {
+                        value: this.state.roomName,
+                        onChange: this.handleChange,
+                        type: 'text',
+                        placeholder: 'Create a room',
+                        required: true }),
+                    _react2.default.createElement(
+                        'button',
+                        { id: 'create-room-btn', type: 'submit' },
+                        '+'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return NewRoomForm;
+}(_react2.default.Component);
+
+exports.default = NewRoomForm;
 
 /***/ })
 /******/ ]);
