@@ -1084,7 +1084,7 @@ var App = function (_React$Component) {
 
             var chatManager = new _reactNative.ChatManager({
                 instanceLocator: _config.instanceLocator,
-                userId: 'ckTestNoRooms',
+                userId: 'ckTest1',
                 tokenProvider: new _reactNative.TokenProvider({ url: _config.tokenUrl })
             });
 
@@ -1241,6 +1241,10 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = __webpack_require__(17);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _Message = __webpack_require__(40);
 
 var _Message2 = _interopRequireDefault(_Message);
@@ -1263,6 +1267,20 @@ var MessageList = function (_React$Component) {
     }
 
     _createClass(MessageList, [{
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate() {
+            var node = _reactDom2.default.findDOMNode(this);
+            this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 200 >= node.scrollHeight;
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            if (this.shouldScrollToBottom) {
+                var node = _reactDom2.default.findDOMNode(this);
+                node.scrollTop = node.scrollHeight;
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(

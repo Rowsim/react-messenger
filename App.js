@@ -24,7 +24,7 @@ class App extends React.Component {
     componentDidMount() {
         const chatManager = new ChatManager({
             instanceLocator,
-            userId: 'ckTestNoRooms',
+            userId: 'ckTest1',
             tokenProvider: new TokenProvider({ url: tokenUrl })
         })
 
