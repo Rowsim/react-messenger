@@ -3,6 +3,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client/react-native'
 import MessageList from './components/message/MessageList'
 
 import { tokenUrl, instanceLocator } from './config'
+import SendMessageForm from './components/message/SendMessageForm';
 
 class App extends React.Component {
 
@@ -15,9 +16,9 @@ class App extends React.Component {
 
     componentDidMount() {
         const chatManager = new ChatManager({
-             instanceLocator,
-             userId: 'ckTest1',
-             tokenProvider: new TokenProvider({url: tokenUrl})
+            instanceLocator,
+            userId: 'ckTest1',
+            tokenProvider: new TokenProvider({ url: tokenUrl })
         })
 
         chatManager.connect().then(currentUser => {
@@ -28,7 +29,7 @@ class App extends React.Component {
                 hooks: {
                     onMessage: message => {
                         console.log('message: ', message);
-                        this.setState( {
+                        this.setState({
                             messages: [...this.state.messages, message]
                         })
                     }
@@ -42,7 +43,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <MessageList messages={this.state.messages}/>
+                <MessageList messages={this.state.messages} />
+                <SendMessageForm />
             </div>
         );
     }
