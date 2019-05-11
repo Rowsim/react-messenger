@@ -1185,6 +1185,10 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Message = __webpack_require__(40);
+
+var _Message2 = _interopRequireDefault(_Message);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1203,26 +1207,15 @@ var MessageList = function (_React$Component) {
     }
 
     _createClass(MessageList, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "message-list" },
+                'div',
+                { className: 'message-list' },
                 this.props.messages.map(function (message, index) {
-                    return _react2.default.createElement(
-                        "div",
-                        { key: index, className: "message" },
-                        _react2.default.createElement(
-                            "div",
-                            null,
-                            message.senderId
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            null,
-                            message.parts[0].payload.content
-                        )
-                    );
+                    return _react2.default.createElement(_Message2.default, { key: index,
+                        senderId: message.senderId,
+                        text: message.parts[0].payload.content });
                 })
             );
         }
@@ -21727,6 +21720,42 @@ Object.keys(a).join(", ")+"}":d,""));return g}function O(a,b){return"object"===t
 function R(a,b,d,e,c){var g="";null!=d&&(g=(""+d).replace(J,"$\x26/")+"/");b=L(b,g,e,c);null==a||N(a,"",Q,b);M(b)}var S={forEach:function(a,b,d){if(null==a)return a;b=L(null,null,b,d);null==a||N(a,"",P,b);M(b)},map:function(a,b,d){if(null==a)return a;var e=[];R(a,e,null,b,d);return e},count:function(a){return null==a?0:N(a,"",r.thatReturnsNull,null)},toArray:function(a){var b=[];R(a,b,null,r.thatReturnsArgument);return b}};
 module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.toArray,only:function(a){G.isValidElement(a)?void 0:t("143");return a}},Component:B.Component,PureComponent:B.PureComponent,unstable_AsyncComponent:B.AsyncComponent,createElement:G.createElement,cloneElement:G.cloneElement,isValidElement:G.isValidElement,createFactory:G.createFactory,version:"16.0.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:C,assign:f}};
 
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Message(props) {
+    return _react2.default.createElement(
+        "div",
+        { className: "message" },
+        _react2.default.createElement(
+            "div",
+            null,
+            props.senderId
+        ),
+        _react2.default.createElement(
+            "div",
+            null,
+            props.text
+        )
+    );
+}
+
+exports.default = Message;
 
 /***/ })
 /******/ ]);
