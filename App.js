@@ -6,6 +6,13 @@ import { tokenUrl, instanceLocator } from './config'
 
 class App extends React.Component {
 
+    constructor() {
+        super()
+        this.state = {
+            messages: []
+        }
+    }
+
     componentDidMount() {
         const chatManager = new ChatManager({
              instanceLocator,
@@ -20,7 +27,10 @@ class App extends React.Component {
                 roomId: '19431228',
                 hooks: {
                     onMessage: message => {
-                        console.log('message: ', message)
+                        console.log('message: ', message);
+                        this.setState( {
+                            messages: [...this.state.messages, message]
+                        })
                     }
                 }
             })
@@ -32,7 +42,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <MessageList />
+                <MessageList messages={this.state.messages}/>
             </div>
         );
     }

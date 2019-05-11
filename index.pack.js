@@ -1040,6 +1040,8 @@ var _config = __webpack_require__(21);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1052,12 +1054,19 @@ var App = function (_React$Component) {
     function App() {
         _classCallCheck(this, App);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+        _this.state = {
+            messages: []
+        };
+        return _this;
     }
 
     _createClass(App, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
+
             var chatManager = new _reactNative.ChatManager({
                 instanceLocator: _config.instanceLocator,
                 userId: 'ckTest1',
@@ -1072,6 +1081,9 @@ var App = function (_React$Component) {
                     hooks: {
                         onMessage: function onMessage(message) {
                             console.log('message: ', message);
+                            _this2.setState({
+                                messages: [].concat(_toConsumableArray(_this2.state.messages), [message])
+                            });
                         }
                     }
                 });
@@ -1085,7 +1097,7 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'app' },
-                _react2.default.createElement(_MessageList2.default, null)
+                _react2.default.createElement(_MessageList2.default, { messages: this.state.messages })
             );
         }
     }]);
@@ -1181,17 +1193,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DUMMY_DATA = [{
-    senderId: 'perborgen',
-    text: 'Hey, how is it going?'
-}, {
-    senderId: 'janedoe',
-    text: 'Great! How about you?'
-}, {
-    senderId: 'perborgen',
-    text: 'Good to hear! I am great as well'
-}];
-
 var MessageList = function (_React$Component) {
     _inherits(MessageList, _React$Component);
 
@@ -1202,24 +1203,24 @@ var MessageList = function (_React$Component) {
     }
 
     _createClass(MessageList, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                { className: 'message-list' },
-                DUMMY_DATA.map(function (message, index) {
+                "div",
+                { className: "message-list" },
+                this.props.messages.map(function (message, index) {
                     return _react2.default.createElement(
-                        'div',
-                        { key: index, className: 'message' },
+                        "div",
+                        { key: index, className: "message" },
                         _react2.default.createElement(
-                            'div',
+                            "div",
                             null,
                             message.senderId
                         ),
                         _react2.default.createElement(
-                            'div',
+                            "div",
                             null,
-                            message.text
+                            message.parts[0].payload.content
                         )
                     );
                 })
