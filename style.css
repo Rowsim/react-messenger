@@ -46,7 +46,7 @@ button:hover {
 
 .rooms-list {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 0 10px;
     background-color: var(--main-color);
     height: 100%;
     overflow-y: auto;
@@ -62,8 +62,8 @@ button:hover {
     margin: 10px 0;
 }
 
-.rooms-list > h3 {
-    margin: 5px 0;
+.rooms-list .rooms-list-title {
+    font-size: 25px;
     color: var(--secondary-color);
 }
 
@@ -71,6 +71,10 @@ button:hover {
     color: var(--main-text-color);
     font-weight: 600;
     text-decoration: none;
+ }
+
+ .rooms-list .room a:hover {
+     color: var(--secondary-color);
  }
 
 .rooms-list .room.active a {
@@ -127,6 +131,29 @@ button:hover {
 
 .new-room-form button {
     border: 0;
+}
+
+.room-status {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    align-items: center;
+}
+
+.room-status .room-status-info {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.room-status .room-status-users {
+    display: flex;
+    font-size: 13px;
+}
+
+.room-status .room-status-user {
+    margin-right: 3px;
 }
 
 .message {

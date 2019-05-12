@@ -1096,6 +1096,10 @@ var _NewRoomForm = __webpack_require__(23);
 
 var _NewRoomForm2 = _interopRequireDefault(_NewRoomForm);
 
+var _RoomStatus = __webpack_require__(44);
+
+var _RoomStatus2 = _interopRequireDefault(_RoomStatus);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -1115,7 +1119,7 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
         _this.state = {
-            roomId: null,
+            room: {},
             messages: [],
             joinableRooms: [],
             joinedRooms: []
@@ -1153,7 +1157,6 @@ var App = function (_React$Component) {
             var _this3 = this;
 
             this.setState({ messages: [] });
-
             this.currentUser.subscribeToRoomMultipart({
                 roomId: roomId,
                 hooks: {
@@ -1165,7 +1168,7 @@ var App = function (_React$Component) {
                 }
             }).then(function (room) {
                 _this3.setState({
-                    roomId: room.id
+                    room: room
                 });
                 _this3.getRooms();
             }).catch(function (err) {
@@ -1191,7 +1194,7 @@ var App = function (_React$Component) {
         value: function sendMessage(text) {
             this.currentUser.sendMessage({
                 text: text,
-                roomId: this.state.roomId
+                roomId: this.state.room.id
             });
         }
     }, {
@@ -1218,15 +1221,16 @@ var App = function (_React$Component) {
                     { className: 'content-side' },
                     _react2.default.createElement(_RoomList2.default, { subscribeToRoom: this.subscribeToRoom,
                         rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)),
-                        roomId: this.state.roomId }),
+                        roomId: this.state.room.id }),
                     _react2.default.createElement(_NewRoomForm2.default, { createRoom: this.createRoom })
                 ),
                 _react2.default.createElement(
                     'div',
                     { className: 'content-main' },
+                    _react2.default.createElement(_RoomStatus2.default, { room: this.state.room }),
                     _react2.default.createElement(_MessageList2.default, { messages: this.state.messages,
-                        roomId: this.state.roomId }),
-                    _react2.default.createElement(_SendMessageForm2.default, { disabled: !this.state.roomId,
+                        roomId: this.state.room.id }),
+                    _react2.default.createElement(_SendMessageForm2.default, { disabled: !this.state.room.id,
                         sendMessage: this.sendMessage })
                 )
             );
@@ -1602,8 +1606,8 @@ var RoomList = function (_React$Component) {
                     "ul",
                     null,
                     _react2.default.createElement(
-                        "h3",
-                        null,
+                        "div",
+                        { className: "rooms-list-title" },
                         "Rooms"
                     ),
                     orderedRooms.map(function (room) {
@@ -22126,6 +22130,83 @@ Object.keys(a).join(", ")+"}":d,""));return g}function O(a,b){return"object"===t
 function R(a,b,d,e,c){var g="";null!=d&&(g=(""+d).replace(J,"$\x26/")+"/");b=L(b,g,e,c);null==a||N(a,"",Q,b);M(b)}var S={forEach:function(a,b,d){if(null==a)return a;b=L(null,null,b,d);null==a||N(a,"",P,b);M(b)},map:function(a,b,d){if(null==a)return a;var e=[];R(a,e,null,b,d);return e},count:function(a){return null==a?0:N(a,"",r.thatReturnsNull,null)},toArray:function(a){var b=[];R(a,b,null,r.thatReturnsArgument);return b}};
 module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.toArray,only:function(a){G.isValidElement(a)?void 0:t("143");return a}},Component:B.Component,PureComponent:B.PureComponent,unstable_AsyncComponent:B.AsyncComponent,createElement:G.createElement,cloneElement:G.cloneElement,isValidElement:G.isValidElement,createFactory:G.createFactory,version:"16.0.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:C,assign:f}};
 
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RoomStatus = function (_React$Component) {
+    _inherits(RoomStatus, _React$Component);
+
+    function RoomStatus() {
+        _classCallCheck(this, RoomStatus);
+
+        return _possibleConstructorReturn(this, (RoomStatus.__proto__ || Object.getPrototypeOf(RoomStatus)).apply(this, arguments));
+    }
+
+    _createClass(RoomStatus, [{
+        key: "render",
+        value: function render() {
+            if (this.props.room.users) {
+                return _react2.default.createElement(
+                    "div",
+                    { className: "room-status" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "room-status-info" },
+                        _react2.default.createElement(
+                            "div",
+                            null,
+                            this.props.room.name
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "room-status-users" },
+                            this.props.room.users.map(function (user, index) {
+                                return _react2.default.createElement(
+                                    "div",
+                                    { key: index, className: "room-status-user" },
+                                    user.name + ','
+                                );
+                            })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        "Leave"
+                    )
+                );
+            }
+            return null;
+        }
+    }]);
+
+    return RoomStatus;
+}(_react2.default.Component);
+
+exports.default = RoomStatus;
 
 /***/ })
 /******/ ]);
