@@ -1167,14 +1167,22 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'app' },
-                _react2.default.createElement(_RoomList2.default, { subscribeToRoom: this.subscribeToRoom,
-                    rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)),
-                    roomId: this.state.roomId }),
-                _react2.default.createElement(_MessageList2.default, { messages: this.state.messages,
-                    roomId: this.state.roomId }),
-                _react2.default.createElement(_SendMessageForm2.default, { disabled: !this.state.roomId,
-                    sendMessage: this.sendMessage }),
-                _react2.default.createElement(_NewRoomForm2.default, { createRoom: this.createRoom })
+                _react2.default.createElement(
+                    'div',
+                    { className: 'content-side' },
+                    _react2.default.createElement(_RoomList2.default, { subscribeToRoom: this.subscribeToRoom,
+                        rooms: [].concat(_toConsumableArray(this.state.joinableRooms), _toConsumableArray(this.state.joinedRooms)),
+                        roomId: this.state.roomId }),
+                    _react2.default.createElement(_NewRoomForm2.default, { createRoom: this.createRoom })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'content-main' },
+                    _react2.default.createElement(_MessageList2.default, { messages: this.state.messages,
+                        roomId: this.state.roomId }),
+                    _react2.default.createElement(_SendMessageForm2.default, { disabled: !this.state.roomId,
+                        sendMessage: this.sendMessage })
+                )
             );
         }
     }]);
@@ -21928,12 +21936,21 @@ var SendMessageForm = function (_React$Component) {
                 'form',
                 { className: 'send-message-form',
                     onSubmit: this.handleSubmit },
-                _react2.default.createElement('input', {
-                    disabled: this.props.disabled,
-                    onChange: this.handleChange,
-                    value: this.state.message,
-                    placeholder: 'Type something',
-                    type: 'text' })
+                _react2.default.createElement(
+                    'div',
+                    { className: 'send-message-form-container' },
+                    _react2.default.createElement('input', {
+                        disabled: this.props.disabled,
+                        onChange: this.handleChange,
+                        value: this.state.message,
+                        placeholder: 'Type something',
+                        type: 'text' }),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.handleSubmit },
+                        'Send'
+                    )
+                )
             );
         }
     }]);
@@ -22093,12 +22110,12 @@ var NewRoomForm = function (_React$Component) {
                         value: this.state.roomName,
                         onChange: this.handleChange,
                         type: 'text',
-                        placeholder: 'Create a room',
+                        placeholder: 'Room name',
                         required: true }),
                     _react2.default.createElement(
                         'button',
                         { id: 'create-room-btn', type: 'submit' },
-                        '+'
+                        'Create'
                     )
                 )
             );

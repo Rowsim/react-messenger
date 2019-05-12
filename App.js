@@ -86,14 +86,18 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <RoomList subscribeToRoom={this.subscribeToRoom}
-                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-                    roomId={this.state.roomId} />
-                <MessageList messages={this.state.messages}
-                    roomId={this.state.roomId} />
-                <SendMessageForm disabled={!this.state.roomId} 
-                sendMessage={this.sendMessage} />
-                <NewRoomForm createRoom={this.createRoom} />
+                <div className="content-side">
+                    <RoomList subscribeToRoom={this.subscribeToRoom}
+                        rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                        roomId={this.state.roomId} />
+                    <NewRoomForm createRoom={this.createRoom} />
+                </div>
+                <div className="content-main">
+                    <MessageList messages={this.state.messages}
+                        roomId={this.state.roomId} />
+                    <SendMessageForm disabled={!this.state.roomId}
+                        sendMessage={this.sendMessage} />
+                </div>
             </div>
         );
     }
