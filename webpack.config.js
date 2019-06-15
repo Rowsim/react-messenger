@@ -1,25 +1,37 @@
 module.exports = {
-  "output": {
-    "filename": "[name].pack.js"
+  output: {
+    filename: "[name].pack.js"
   },
-  "module": {
-    "rules": [
+  module: {
+    rules: [
       {
-        "use": {
-          "loader": "babel-loader",
-          "options": {
-            "presets": [
-              "babel-preset-env",
-              "babel-preset-react"
-            ]
+        use: { loader: "awesome-typescript-loader" },
+        test: /\.tsx?$/,
+        exclude: /node_modules/
+      },
+      {
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["babel-preset-env", "babel-preset-react"]
           }
         },
-        "exclude": /node_modules/,
-        "test": /\.js$/
+        test: /\.js$/,
+        exclude: /node_modules/
+      },
+      {
+        use: {
+          loader: "source-map-loader"
+        },
+        enforce: "pre",
+        test: /\.js$/
       }
     ]
   },
-  "entry": {
-    "index": "./index"
+  entry: {
+    index: "./index"
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"]
   }
 };
