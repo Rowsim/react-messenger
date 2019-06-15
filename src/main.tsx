@@ -5,11 +5,10 @@ import App from "./App";
 function MainRouter() {
   return (
     <Router>
-        <Switch>
+      <Switch>
         <Route exact path="/" component={App} />
-        <Route component={App}></Route>
-
-        </Switch>
+        <Route component={App} />
+      </Switch>
     </Router>
   );
 }

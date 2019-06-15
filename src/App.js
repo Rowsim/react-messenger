@@ -10,7 +10,7 @@ import RoomList from "./components/room/RoomList";
 import NewRoomForm from "./components/room/NewRoomForm";
 import RoomStatus from "./components/room/RoomStatus";
 
-import './style.css'
+import "./style.css";
 
 class App extends React.Component {
   constructor() {

@@ -1,242 +1,242 @@
 :root {
-    --main-color: #dd7e47;
-    --secondary-color: rgb(236, 236, 236);
-    --main-text-color: #3e5869;
+  --main-color: #dd7e47;
+  --secondary-color: rgb(236, 236, 236);
+  --main-text-color: #3e5869;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: system-ui;
-    font-weight: 200;
-    color: 	#3e5869;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui;
+  font-weight: 200;
+  color: #3e5869;
 }
 
 #root {
-    height: 100%;
+  height: 100%;
 }
 
 .app {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .content-side {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
 }
 
 .content-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
 }
 
 form {
-    margin: 0;
+  margin: 0;
 }
 
 button:hover {
-    cursor: pointer;
-    opacity: 0.9;
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .rooms-list {
-    box-sizing: border-box;
-    padding: 0 10px;
-    background-color: var(--main-color);
-    height: 100%;
-    overflow-y: auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+  background-color: var(--main-color);
+  height: 100%;
+  overflow-y: auto;
 }
 
 .rooms-list > ul {
-    list-style-type: none;    
-    padding: 0;
-    overflow-x: auto;
+  list-style-type: none;
+  padding: 0;
+  overflow-x: auto;
 }
 
 .rooms-list li {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .rooms-list .rooms-list-title {
-    font-size: 25px;
-    color: var(--secondary-color);
+  font-size: 25px;
+  color: var(--secondary-color);
 }
 
 .rooms-list .room a {
-    color: var(--main-text-color);
-    font-weight: 600;
-    text-decoration: none;
- }
+  color: var(--main-text-color);
+  font-weight: 600;
+  text-decoration: none;
+}
 
- .rooms-list .room a:hover {
-     color: var(--secondary-color);
- }
+.rooms-list .room a:hover {
+  color: var(--secondary-color);
+}
 
 .rooms-list .room.active a {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 .new-room-form {
-    display: flex;
-    align-content: center;
-    padding: 0 5px;
-    background-color: rgba(221, 126, 71, 0.84);
-    color: var(--main-text-color);
-    height: 60px;
+  display: flex;
+  align-content: center;
+  padding: 0 5px;
+  background-color: rgba(221, 126, 71, 0.84);
+  color: var(--main-text-color);
+  height: 60px;
 }
 
 .new-room-form form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px 0;
 }
 
 .new-room-form input {
-    width: 100%;
-    height: 25px;
-    margin: 0 5px 5px 5px;
-    background: rgb(222, 222, 222);
-    border-radius: 5px;
-    text-align: center;
+  width: 100%;
+  height: 25px;
+  margin: 0 5px 5px 5px;
+  background: rgb(222, 222, 222);
+  border-radius: 5px;
+  text-align: center;
 }
 
 .new-room-form button {
-    background: rgb(90, 160, 90);
-    color: white;
-    height: 25px;
-    width: 60px;
-    border-radius: 10px;
-    align-self: center;
-    font-weight: bold;
-} 
+  background: rgb(90, 160, 90);
+  color: white;
+  height: 25px;
+  width: 60px;
+  border-radius: 10px;
+  align-self: center;
+  font-weight: bold;
+}
 
 .new-room-form input::placeholder {
-    color: var(--main-text-color);
-    font-weight: 200;
+  color: var(--main-text-color);
+  font-weight: 200;
 }
 
 .new-room-form input:focus {
-    outline-width: 0;
+  outline-width: 0;
 }
 
 .new-room-form input {
-    border: 0;
+  border: 0;
 }
 
 .new-room-form button {
-    border: 0;
+  border: 0;
 }
 
 .room-status {
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 10px;
-    align-items: center;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  align-items: center;
 }
 
 .room-status .room-status-info {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
 }
 
 .room-status .room-status-users {
-    display: flex;
-    font-size: 13px;
+  display: flex;
+  font-size: 13px;
 }
 
 .room-status .room-status-user {
-    margin-right: 3px;
+  margin-right: 3px;
 }
 
 .message {
-    margin: 15px 6px;
+  margin: 15px 6px;
 }
 
 .message .message-username {
-    font-size: 11px;
-    color: var(--main-text-color);
-    opacity: 0.9;
-    font-weight: bold;
-    margin-bottom: 6px;
+  font-size: 11px;
+  color: var(--main-text-color);
+  opacity: 0.9;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 .message .message-text {
-    font-size: 15px;
-    color: var(--main-text-color);
+  font-size: 15px;
+  color: var(--main-text-color);
 }
 
 .message-list {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    overflow-wrap: break-word;
-    background: var(--secondary-color);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  background: var(--secondary-color);
 }
 
 .message-list .join-room {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-size: 34px;
-    font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 34px;
+  font-weight: 300;
 }
 
 .send-message-form {
-    background-color: var(--secondary-color);
-    height: 60px;
-    display: flex;
-    align-items: center;
+  background-color: var(--secondary-color);
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .send-message-form-container {
-    display: flex;
-    width: 100%;
-    margin: 20px;
-    height: 40px;
-    border-radius: 5px;
-    background-color: var(--secondary-color);
-
+  display: flex;
+  width: 100%;
+  margin: 20px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
 }
 
 .send-message-form input {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    border-style: none;
-    background-color: white;
-    font-weight: 200;
-    padding: 0 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border-style: none;
+  background-color: white;
+  font-weight: 200;
+  padding: 0 5px;
 }
 
 .send-message-form button {
-    background: rgb(90, 160, 90);
-    color: white;
-    height: 100%;
-    width: 80px;
-    border-radius: 0 10px 10px 0;
-    border-style: none;
-    align-self: center;
-    font-weight: bold;
+  background: rgb(90, 160, 90);
+  color: white;
+  height: 100%;
+  width: 80px;
+  border-radius: 0 10px 10px 0;
+  border-style: none;
+  align-self: center;
+  font-weight: bold;
 }
 
 .send-message-form input:focus {
-    outline-width: 0;
+  outline-width: 0;
 }
 
 .send-message-form input::placeholder {
-    color: var(--main-text-color);
+  color: var(--main-text-color);
 }
 
 .help-text {
-    position: absolute;
-    top: 10px;
+  position: absolute;
+  top: 10px;
 }
