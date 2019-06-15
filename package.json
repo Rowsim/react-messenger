@@ -2,18 +2,43 @@
   "name": "react-messenger",
   "dependencies": {
     "@pusher/chatkit-client": "^1.5.0",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router": "^5.0.2",
+    "@types/react-router-dom": "^4.3.4",
     "react": "16.0.0",
-    "react-dom": "16.0.0"
+    "react-dom": "16.0.0",
+    "react-router-dom": "latest",
+    "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "webpack": "^2.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.0",
-    "babel-loader": "^7.0",
+    "babel-loader": "8.0.5",
     "babel-preset-env": "*",
-    "babel-preset-react": "*"
+    "babel-preset-react": "*",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.5.2",
+    "webpack": "4.29.6",
+    "webpack-cli": "^3.3.4"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w"
+    "webpack": "webpack",
+    "watch": "webpack -w",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
