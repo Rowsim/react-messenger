@@ -1,4 +1,5 @@
-module.exports = {
+//Now using react-scripts
+/* module.exports = {
   output: {
     filename: "[name].pack.js"
   },
@@ -35,3 +36,4 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"]
   }
 };
+ */
