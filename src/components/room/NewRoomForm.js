@@ -19,7 +19,7 @@ class NewRoomForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault
+        e.preventDefault()
         this.props.createRoom(this.state.roomName)
         this.setState({roomName: ''})
     }

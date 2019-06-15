@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   entry: {
-    index: "./index"
+    index: "./src/index"
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
