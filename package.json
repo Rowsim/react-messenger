@@ -8,18 +8,15 @@
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-router-dom": "latest",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "typescript": "^3.5.2"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-core": "^6.0",
-    "babel-loader": "8.0.5",
-    "babel-preset-env": "*",
-    "babel-preset-react": "*",
-    "source-map-loader": "^0.2.4",
-    "typescript": "^3.5.2",
     "webpack": "4.29.6",
-    "webpack-cli": "^3.3.4"
+    "webpack-cli": "^3.3.4",
+    "babel-core": "^6.0.0",
+    "babel-preset-env": "*",
+    "babel-preset-react": "*"
   },
   "scripts": {
     "start": "react-scripts start",
