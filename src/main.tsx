@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import App from "./App";
+import MainChat from "./pages/main-chat/main-chat";
 
 function MainRouter() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route component={App} />
+        <Route exact path="/" component={MainChat} />
+        <Route component={MainChat} />
       </Switch>
     </Router>
   );

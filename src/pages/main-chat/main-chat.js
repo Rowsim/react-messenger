@@ -3,16 +3,16 @@ import {
   ChatManager,
   TokenProvider
 } from "@pusher/chatkit-client/react-native";
-import { tokenUrl, instanceLocator } from "./config";
-import MessageList from "./components/message/MessageList";
-import SendMessageForm from "./components/message/SendMessageForm";
-import RoomList from "./components/room/RoomList";
-import NewRoomForm from "./components/room/NewRoomForm";
-import RoomStatus from "./components/room/RoomStatus";
+import { tokenUrl, instanceLocator } from "../../config";
+import MessageList from "../../components/message/MessageList";
+import SendMessageForm from "../../components/message/SendMessageForm";
+import RoomList from "../../components/room/RoomList";
+import NewRoomForm from "../../components/room/NewRoomForm";
+import RoomStatus from "../../components/room/RoomStatus";
 
-import "./style.css";
+import "./main-chat.scss";
 
-class App extends React.Component {
+class MainChat extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -124,4 +124,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default MainChat;
