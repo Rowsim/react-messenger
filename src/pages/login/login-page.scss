@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap");
 
+$bg-color: #471329;
+
 #vanta-bg {
   z-index: -1;
 }
@@ -45,22 +47,22 @@
   &__google {
     z-index: inherit;
     width: 340px;
-    height: 180px;
+    height: 130px;
     border-radius: 3px;
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     p {
       font-size: 32px;
       margin: 2px 0 0 0;
-      color: #471329;
+      color: $bg-color;
     }
 
     &:hover {
-      box-shadow: 1px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 2px 5px rgba(0, 0, 0, 0.2);
 
       button {
         span {
@@ -71,16 +73,19 @@
 
     button {
       height: 50px;
+      width: 100%;
+      justify-content: center;
 
-      &:first-child {
-        background: none;
+      div {
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
       &:hover {
         border: 1px dashed rgba(80, 163, 80, 0.6) !important;
       }
       span {
-        font-family: "Indie Flower", cursive;
         font-size: 25px;
         font-weight: 600 !important;
         color: rgb(93, 93, 93);

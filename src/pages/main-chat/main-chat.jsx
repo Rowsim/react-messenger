@@ -3,7 +3,8 @@ import {
   ChatManager,
   TokenProvider
 } from "@pusher/chatkit-client/react-native";
-import { tokenUrl, instanceLocator } from "../../chat-config";
+import Chatkit from "@pusher/chatkit-server";
+import { tokenUrl, instanceLocator, key } from "../../chat-config";
 import MessageList from "../../components/message/MessageList";
 import SendMessageForm from "../../components/message/SendMessageForm";
 import RoomList from "../../components/room/RoomList";
@@ -19,7 +20,8 @@ class MainChat extends React.Component {
       room: {},
       messages: [],
       joinableRooms: [],
-      joinedRooms: []
+      joinedRooms: [],
+      googleProfile: {}
     };
 
     this.sendMessage = this.sendMessage.bind(this);
@@ -29,6 +31,24 @@ class MainChat extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      googleProfile: this.props.location.state.googleProfile
+    });
+
+    const chatkit = new Chatkit({
+      instanceLocator: instanceLocator,
+      key: key
+    });
+
+    chatkit
+      .getUsers()
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     const chatManager = new ChatManager({
       instanceLocator,
       userId: "ckTest1",
