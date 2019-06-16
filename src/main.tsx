@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import MainChat from "./pages/main-chat/main-chat";
+import "./styles/main.scss";
 
 function MainRouter() {
   return (
