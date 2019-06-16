@@ -3,7 +3,7 @@ import {
   ChatManager,
   TokenProvider
 } from "@pusher/chatkit-client/react-native";
-import { tokenUrl, instanceLocator } from "../../config";
+import { tokenUrl, instanceLocator } from "../../chat-config";
 import MessageList from "../../components/message/MessageList";
 import SendMessageForm from "../../components/message/SendMessageForm";
 import RoomList from "../../components/room/RoomList";

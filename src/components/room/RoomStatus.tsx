@@ -1,6 +1,17 @@
 import React from "react";
 
-class RoomStatus extends React.Component {
+interface RoomStatusProps {
+  room: {
+    users: [
+      {
+        name: string;
+      }
+    ];
+    name: string;
+  };
+}
+
+export default class RoomStatus extends React.Component<RoomStatusProps> {
   render() {
     if (this.props.room.users) {
       return (
@@ -24,5 +35,3 @@ class RoomStatus extends React.Component {
     return null;
   }
 }
-
-export default RoomStatus;
