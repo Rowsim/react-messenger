@@ -1,5 +1,9 @@
 import React from "react";
 
-function LoginPage() {}
+function LoginPage() {
+    return (
+        <div>Login!</div>
+    )
+}
 
 export default LoginPage;
