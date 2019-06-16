@@ -23,7 +23,7 @@
     "noEmit": true
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*", "public/scripts/vantajs"
   ],
   "exlude": [
     "node_modules/*"

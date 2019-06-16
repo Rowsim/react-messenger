@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap");
+
+#vanta-bg {
+  z-index: -1;
+}
+
+.login-page--title {
+  position: absolute;
+  z-index: 2;
+  font-family: "Indie Flower", cursive;
+  color: white;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+
+  h1,
+  h3,
+  h4 {
+    margin: 0;
+  }
+
+  a {
+    color: rgb(96, 120, 255);
+    z-index: inherit;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.login-page {
+  position: absolute;
+  z-index: 1;
+  font-family: "Indie Flower", cursive;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(39, 39, 39);
+
+  &__google {
+    z-index: inherit;
+    width: 340px;
+    height: 180px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    p {
+      font-size: 32px;
+      margin: 2px 0 0 0;
+      color: #471329;
+    }
+
+    &:hover {
+      box-shadow: 1px 3px rgba(0, 0, 0, 0.2);
+
+      button {
+        span {
+          color: rgb(80, 163, 80);
+        }
+      }
+    }
+
+    button {
+      height: 50px;
+
+      &:first-child {
+        background: none;
+      }
+
+      &:hover {
+        border: 1px dashed rgba(80, 163, 80, 0.6) !important;
+      }
+      span {
+        font-family: "Indie Flower", cursive;
+        font-size: 25px;
+        font-weight: 600 !important;
+        color: rgb(93, 93, 93);
+      }
+    }
+  }
+}
