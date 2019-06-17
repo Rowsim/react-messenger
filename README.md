@@ -8,8 +8,9 @@ $ npm run build
 
 ## Development
 
-Run Webpack in watch-mode to continually compile the JavaScript as you work:
-
 ```
-$ npm run watch
+$ npm run start
+
+-- Node server localhost:5000
+$ npm run serve
 ```
