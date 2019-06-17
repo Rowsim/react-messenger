@@ -21,7 +21,6 @@ class MainChat extends React.Component {
       messages: [],
       joinableRooms: [],
       joinedRooms: [],
-      googleProfile: {}
     };
 
     this.sendMessage = this.sendMessage.bind(this);
@@ -31,29 +30,13 @@ class MainChat extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      googleProfile: this.props.location.state.googleProfile
-    });
-
-    const chatkit = new Chatkit({
-      instanceLocator: instanceLocator,
-      key: key
-    });
-
-    chatkit
-      .getUsers()
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    const chatManager = new ChatManager({
+    this.loginGoogleUser();
+      const chatManager = new ChatManager({
       instanceLocator,
-      userId: "ckTest1",
+      userId: this.props.location.state.googleProfile.googleId,
       tokenProvider: new TokenProvider({ url: tokenUrl })
     });
+   
 
     chatManager
       .connect()
@@ -63,6 +46,46 @@ class MainChat extends React.Component {
         this.getRooms();
       })
       .catch(err => console.log("Error on connection", err));
+  }
+
+  loginGoogleUser() {
+    if (this.props.location.state.googleProfile) {
+      console.log(this.state);
+      const chatkit = new Chatkit({
+        instanceLocator: instanceLocator,
+        key: key
+      });
+
+      chatkit
+        .getUsers()
+        .then(users => {
+          users.forEach(user => {
+            if (user.id === this.props.location.state.googleProfile.googleId) {
+              return;
+            } else {
+              chatkit
+                .createUser({
+                  id: this.props.location.state.googleProfile.googleId,
+                  name: this.props.location.state.googleProfile.name
+                })
+                .then(() => {
+                  console.log("Google user created successfully");
+                  return;
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      this.props.history.push({
+        pathname: "/"
+      });
+    }
   }
 
   subscribeToRoom(roomId) {
