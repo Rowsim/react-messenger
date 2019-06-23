@@ -7,12 +7,12 @@ const clientId =
 
 class LoginPage extends React.Component {
   responseGoogleFail = response => {
-    console.log(response);
+    console.log("Google sign in failed: ", response);
   };
 
   responseGoogleSuccess = res => {
     const googleProfile = res.profileObj;
-    console.log(googleProfile);
+    console.log("Google sign in success: ", googleProfile);
     this.props.history.push({
       pathname: "/chat",
       state: { googleProfile: googleProfile }
@@ -22,8 +22,7 @@ class LoginPage extends React.Component {
   componentDidMount() {
     this.effect = window.VANTA.BIRDS({
       el: "#vanta-bg",
-      backgroundColor: 0x3e061d,
-      backgroundAlpha: 0.95,
+      backgroundColor: 0x202020,
       color1: 0xff8700,
       color2: 0x6900ff,
       wingSpan: 35.0,

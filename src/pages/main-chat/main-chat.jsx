@@ -30,27 +30,27 @@ class MainChat extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.loginGoogleUser());
-    /*   if (this.loginGoogleUser()) {
-      const chatManager = new ChatManager({
-        instanceLocator,
-        userId: this.props.location.state.googleProfile.googleId,
-        tokenProvider: new TokenProvider({ url: tokenUrl })
-      });
-    
+    this.loginGoogleUser().then(success => {
+      if (success) {
+        const chatManager = new ChatManager({
+          instanceLocator,
+          userId: this.props.location.state.googleProfile.googleId,
+          tokenProvider: new TokenProvider({ url: tokenUrl })
+        });
 
-      chatManager
-        .connect()
-        .then(currentUser => {
-          console.log("Successful connection", currentUser);
-          this.currentUser = currentUser;
-          this.getRooms();
-        })
-        .catch(err => console.log("Error on connection", err));
-    } */
+        chatManager
+          .connect()
+          .then(currentUser => {
+            console.log("Successful connection", currentUser);
+            this.currentUser = currentUser;
+            this.getRooms();
+          })
+          .catch(err => console.log("Error on connection", err));
+      }
+    });
   }
 
-  loginGoogleUser() {
+  async loginGoogleUser() {
     let googleLoginSuccess = false;
     if (this.props.location.state && this.props.location.state.googleProfile) {
       const chatkit = new Chatkit({
@@ -58,29 +58,29 @@ class MainChat extends React.Component {
         key: key
       });
 
-      chatkit.getUsers().then(users => {
-        if (
-          users.filter(
-            user => user.id === this.props.location.state.googleProfile.googleId
-          )
-        ) {
-          googleLoginSuccess = true;
-        } else {
-          chatkit
-            .createUser({
-              id: this.props.location.state.googleProfile.googleId,
-              name: this.props.location.state.googleProfile.name
-            })
-            .then(() => {
-              console.log("Google user created successfully");
-              googleLoginSuccess = true;
-            })
-            .catch(err => {
-              console.log("Error creating google user", err);
-              googleLoginSuccess = false;
-            });
-        }
-      });
+      const users = await chatkit.getUsers();
+
+      if (
+        users.filter(
+          user => user.id === this.props.location.state.googleProfile.googleId
+        )
+      ) {
+        googleLoginSuccess = true;
+      } else {
+        chatkit
+          .createUser({
+            id: this.props.location.state.googleProfile.googleId,
+            name: this.props.location.state.googleProfile.name
+          })
+          .then(() => {
+            console.log("Google user created successfully");
+            googleLoginSuccess = true;
+          })
+          .catch(err => {
+            console.log("Error creating google user", err);
+            googleLoginSuccess = false;
+          });
+      }
     } else {
       console.log("Google sign in required");
       this.props.history.push({

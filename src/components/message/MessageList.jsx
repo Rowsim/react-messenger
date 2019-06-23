@@ -30,7 +30,7 @@ class MessageList extends React.Component {
           return (
             <Message
               key={index}
-              senderId={message.senderId}
+              senderName={message.sender.name}
               text={message.parts[0].payload.content}
             />
           );
