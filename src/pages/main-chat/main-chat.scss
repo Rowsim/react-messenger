@@ -72,6 +72,7 @@ button:hover {
   color: var(--main-text-color);
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .rooms-list .room a:hover {
@@ -215,6 +216,7 @@ button:hover {
   background-color: white;
   font-weight: 200;
   padding: 0 5px;
+  caret-color: var(--main-color);
 }
 
 .send-message-form button {

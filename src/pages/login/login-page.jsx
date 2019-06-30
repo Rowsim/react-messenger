@@ -40,7 +40,7 @@ class LoginPage extends React.Component {
     return (
       <div>
         <div id="vanta-bg" />
-        <div className="login-page--title">
+        <div className="login-page-title-links">
           <h1>react messenger</h1>
           <h3>using:</h3>
           <a

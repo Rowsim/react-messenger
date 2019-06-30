@@ -6,7 +6,7 @@ $bg-color: #2b2b2b;
   z-index: -1;
 }
 
-.login-page--title {
+.login-page-title-links {
   position: absolute;
   z-index: 2;
   font-family: "Indie Flower", cursive;
@@ -69,6 +69,10 @@ $bg-color: #2b2b2b;
           color: rgb(80, 163, 80);
         }
       }
+
+      p {
+        color: rgba(255, 72, 0, 0.774);
+      }
     }
 
     button {
@@ -83,7 +87,7 @@ $bg-color: #2b2b2b;
       }
 
       &:hover {
-        border: 1px dashed rgba(80, 163, 80, 0.6) !important;
+        border: 1px dashed rgba(255, 72, 0, 0.774) !important;
       }
       span {
         font-size: 25px;
