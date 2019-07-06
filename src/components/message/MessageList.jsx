@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Message from "./Message";
+import "./MessageList.scss";
 
 class MessageList extends React.Component {
   componentWillUpdate() {
@@ -20,7 +21,10 @@ class MessageList extends React.Component {
     if (!this.props.roomId) {
       return (
         <div className="message-list">
-          <div className="join-room">&larr; Join a room!</div>
+          <div className="message-list-noroom">
+            <img className="message-list-noroom__logo" src="/favicon.png" />
+            <div className="message-list-noroom__join-room">&larr; Join a room!</div>
+          </div>
         </div>
       );
     }
