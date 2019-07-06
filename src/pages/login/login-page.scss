@@ -33,6 +33,15 @@ $bg-color: #2b2b2b;
   }
 }
 
+.login-page-title {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 40px;
+  }
+}
+
 .login-page {
   position: absolute;
   z-index: 1;

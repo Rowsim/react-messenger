@@ -41,7 +41,9 @@ class LoginPage extends React.Component {
       <div>
         <div id="vanta-bg" />
         <div className="login-page-title-links">
-          <h1>react messenger</h1>
+          <h1 className="login-page-title">
+            react messenger <img src="/favicon.png" />
+          </h1>
           <h3>using:</h3>
           <a
             href="https://www.npmjs.com/package/create-react-app"
