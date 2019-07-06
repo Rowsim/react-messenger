@@ -135,29 +135,6 @@ button:hover {
   border: 0;
 }
 
-.room-status {
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 10px;
-  align-items: center;
-}
-
-.room-status .room-status-info {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-}
-
-.room-status .room-status-users {
-  display: flex;
-  font-size: 13px;
-}
-
-.room-status .room-status-user {
-  margin-right: 3px;
-}
-
 .message {
   margin: 15px 6px;
 }

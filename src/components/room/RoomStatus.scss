@@ -1,0 +1,30 @@
+@import "../../styles/standard.scss";
+
+.room-status {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 0 10px;
+  align-items: center;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+
+  &__users {
+    display: flex;
+    font-size: 13px;
+  }
+
+  &__user {
+    margin-right: 3px;
+  }
+
+  &__leave {
+      height: 100%;
+      border-radius: 0;
+      background-color:rgb(187, 47, 47);
+  }
+}
