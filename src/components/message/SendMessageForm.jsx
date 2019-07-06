@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./SendMessageForm.scss";
 class SendMessageForm extends React.Component {
   constructor() {
     super();
@@ -33,7 +33,7 @@ class SendMessageForm extends React.Component {
             disabled={this.props.disabled}
             onChange={this.handleChange}
             value={this.state.message}
-            placeholder="Type something"
+            placeholder="Write something nice :)"
             type="text"
           />
           <button onClick={this.handleSubmit}>Send</button>
