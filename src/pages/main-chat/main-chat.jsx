@@ -161,10 +161,12 @@ class MainChat extends React.Component {
             messages={this.state.messages}
             roomId={this.state.room.id}
           />
-          <SendMessageForm
-            disabled={!this.state.room.id}
-            sendMessage={this.sendMessage}
-          />
+          {this.state.room.id && (
+            <SendMessageForm
+              disabled={!this.state.room.id}
+              sendMessage={this.sendMessage}
+            />
+          )}
         </div>
       </div>
     );
