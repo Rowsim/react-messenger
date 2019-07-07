@@ -7,7 +7,7 @@ const UserCard = props => {
   return (
     <div className="user-card">
       <div className="user-card-top">
-        <img className="user-card__image" src="/favicon.png" />
+        <img className="user-card__image" src={props.avatarUrl} />
         <div className="user-card__name">{props.name}</div>
       </div>
       <div className="user-card__contact">

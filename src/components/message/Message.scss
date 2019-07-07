@@ -3,15 +3,18 @@
 .message-container {
   display: flex;
   align-items: flex-start;
+  margin: 0 5px;
 
   .user-icon {
-    height: 45px;
-    padding-top: 14px;
+    height: 44px;
+    margin-top: 16px;
+    border-radius: 12px;
   }
 }
 
 .message {
   margin: 15px 6px;
+  position: relative;
 
   .user-card {
     display: none;

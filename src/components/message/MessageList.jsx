@@ -23,7 +23,9 @@ class MessageList extends React.Component {
         <div className="message-list">
           <div className="message-list-noroom">
             <img className="message-list-noroom__logo" src="/favicon.png" />
-            <div className="message-list-noroom__join-room">&larr; Join a room!</div>
+            <div className="message-list-noroom__join-room">
+              &larr; Join a chat!
+            </div>
           </div>
         </div>
       );
@@ -35,6 +37,7 @@ class MessageList extends React.Component {
             <Message
               key={index}
               senderName={message.sender.name}
+              senderAvatar={message.sender.avatarURL}
               text={message.parts[0].payload.content}
             />
           );

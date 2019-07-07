@@ -59,18 +59,19 @@ class MainChat extends React.Component {
       });
 
       const users = await chatkit.getUsers();
-
       if (
         users.filter(
           user => user.id === this.props.location.state.googleProfile.googleId
-        )
+        ).length > 0
       ) {
         googleLoginSuccess = true;
       } else {
+        console.log("Attempting to create new user");
         chatkit
           .createUser({
             id: this.props.location.state.googleProfile.googleId,
-            name: this.props.location.state.googleProfile.name
+            name: this.props.location.state.googleProfile.name,
+            avatarURL: this.props.location.state.googleProfile.imageUrl
           })
           .then(() => {
             console.log("Google user created successfully");
@@ -151,15 +152,11 @@ class MainChat extends React.Component {
         roomId: roomId
       })
       .then(() => {
-        console.log(
-          `Removed ${this.currentUser.UserId} from room ${roomId}`
-        );
+        console.log(`Removed ${this.currentUser.UserId} from room ${roomId}`);
       })
       .catch(error => {
         console.log(
-          `Error removing ${
-            this.currentUser.UserId
-          } from ${roomId}: ${error} `
+          `Error removing ${this.currentUser.UserId} from ${roomId}: ${error} `
         );
       });
   }
