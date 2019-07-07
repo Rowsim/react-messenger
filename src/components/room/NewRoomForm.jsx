@@ -1,4 +1,5 @@
 import React from "react";
+import './NewRoomForm.scss';
 
 class NewRoomForm extends React.Component {
   constructor() {
@@ -34,7 +35,7 @@ class NewRoomForm extends React.Component {
             placeholder="Room name"
             required
           />
-          <button id="create-room-btn" type="submit">
+          <button id="create-room-btn" className="rc-button" type="submit">
             Create
           </button>
         </form>

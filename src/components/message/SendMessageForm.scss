@@ -14,11 +14,6 @@
     background-color: white;
     font-weight: 200;
     padding: 0 5px;
-    caret-color: $main-colour;
-
-    &:focus {
-      outline-width: 0;
-    }
 
     &::placeholder {
       color: $grey-text;

@@ -3,12 +3,23 @@ $main-colour: #dd7e47;
 $secondary-colour: rgb(236, 236, 236);
 $main-text-colour: #3e5869;
 $grey-text: #cacaca;
+$button-green: rgb(90, 160, 90);
 
 .rc-button {
-    background: rgb(90, 160, 90);
-    color: white;
-    border-radius: 5px;
-    border-style: none;
-    align-self: center;
-    font-weight: bold;
+  background: $button-green;
+  color: white;
+  border-style: none;
+  align-self: center;
+  font-weight: bold;
+  border: 0;
+}
+
+input {
+  outline: 0;
+  border: 0;
+  caret-color: $main-colour;
+
+  &:focus {
+    outline-width: 0;
   }
+}

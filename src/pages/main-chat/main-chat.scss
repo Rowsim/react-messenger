@@ -83,58 +83,6 @@ button:hover {
   color: var(--secondary-color);
 }
 
-.new-room-form {
-  display: flex;
-  align-content: center;
-  padding: 0 5px;
-  background-color: rgba(221, 126, 71, 0.84);
-  color: var(--main-text-color);
-  height: 60px;
-}
-
-.new-room-form form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px 0;
-}
-
-.new-room-form input {
-  width: 100%;
-  height: 25px;
-  margin: 0 5px 5px 5px;
-  background: rgb(222, 222, 222);
-  border-radius: 5px;
-  text-align: center;
-}
-
-.new-room-form button {
-  background: rgb(90, 160, 90);
-  color: white;
-  height: 25px;
-  width: 60px;
-  border-radius: 10px;
-  align-self: center;
-  font-weight: bold;
-}
-
-.new-room-form input::placeholder {
-  color: var(--main-text-color);
-  font-weight: 200;
-}
-
-.new-room-form input:focus {
-  outline-width: 0;
-}
-
-.new-room-form input {
-  border: 0;
-}
-
-.new-room-form button {
-  border: 0;
-}
-
 .message {
   margin: 15px 6px;
 }

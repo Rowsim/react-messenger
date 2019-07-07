@@ -1,0 +1,33 @@
+@import "../../styles/standard.scss";
+
+.new-room-form {
+  display: flex;
+  align-items: flex-end;
+  background-color: $main-colour;
+  color: $main-text-colour;
+  height: 80px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  input {
+    height: 25px;
+    background: rgb(222, 222, 222);
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+
+    &::placeholder {
+      color: grey;
+      font-weight: 200;
+    }
+  }
+
+  button {
+    height: 44px;
+    width: 100%;
+  }
+}
