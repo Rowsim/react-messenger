@@ -1,5 +1,7 @@
 import React from "react";
 import "./UserCard.scss";
+import letterSvg from "../../assets/images/letter.svg";
+import messageSvg from "../../assets/images/message.svg";
 
 const UserCard = props => {
   return (
@@ -9,8 +11,12 @@ const UserCard = props => {
         <div className="user-card__name">Name</div>
       </div>
       <div className="user-card__contact">
-        <div className="user-card__contact__chat">chat</div>
-        <div className="user-card__contact__email">email</div>
+        <a>
+          <img className="user-card__contact__chat" src={messageSvg} />
+        </a>
+        <a>
+          <img className="user-card__contact__email" src={letterSvg} />
+        </a>
       </div>
     </div>
   );

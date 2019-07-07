@@ -36,5 +36,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    img {
+      height: 32px;
+      width: 32px;
+      opacity: 0.8;
+    }
   }
 }
