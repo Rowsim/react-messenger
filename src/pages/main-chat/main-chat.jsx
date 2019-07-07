@@ -144,6 +144,26 @@ class MainChat extends React.Component {
       .catch(err => console.log("Error on create room", err));
   }
 
+  leaveRoom(roomId) {
+    this.currentUser
+      .removeUserFromRoom({
+        userId: this.currentUser.userId,
+        roomId: roomId
+      })
+      .then(() => {
+        console.log(
+          `Removed ${this.currentUser.UserId} from room ${roomId}`
+        );
+      })
+      .catch(error => {
+        console.log(
+          `Error removing ${
+            this.currentUser.UserId
+          } from ${roomId}: ${error} `
+        );
+      });
+  }
+
   render() {
     return (
       <div className="app">
@@ -156,7 +176,7 @@ class MainChat extends React.Component {
           <NewRoomForm createRoom={this.createRoom} />
         </div>
         <div className="content-main">
-          <RoomStatus room={this.state.room} />
+          <RoomStatus room={this.state.room} leaveRoom={this.leaveRoom} />
           <MessageList
             messages={this.state.messages}
             roomId={this.state.room.id}

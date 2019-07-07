@@ -1,5 +1,5 @@
 import React from "react";
-import './RoomStatus.scss';
+import "./RoomStatus.scss";
 
 interface RoomStatusProps {
   room: {
@@ -9,10 +9,22 @@ interface RoomStatusProps {
       }
     ];
     name: string;
+    id: string;
   };
+  leaveRoom: Function;
 }
 
 export default class RoomStatus extends React.Component<RoomStatusProps> {
+  constructor(props: RoomStatusProps) {
+    super(props);
+
+    this.leaveCurrentRoom = this.leaveCurrentRoom.bind(this);
+  }
+
+  leaveCurrentRoom() {
+    this.props.leaveRoom(this.props.room.id);
+  }
+
   render() {
     if (this.props.room.users) {
       return (
@@ -29,7 +41,12 @@ export default class RoomStatus extends React.Component<RoomStatusProps> {
               })}
             </div>
           </div>
-          <button className="room-status__leave rc-button">Leave</button>
+          <button
+            className="room-status__leave rc-button"
+            onClick={this.leaveCurrentRoom}
+          >
+            Leave
+          </button>
         </div>
       );
     }
