@@ -19,10 +19,12 @@ class SendMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.sendMessage(this.state.message);
-    this.setState({
-      message: ""
-    });
+    if (this.state.message) {
+      this.props.sendMessage(this.state.message);
+      this.setState({
+        message: ""
+      });
+    }
   }
 
   render() {
@@ -36,7 +38,9 @@ class SendMessageForm extends React.Component {
             placeholder="Write something nice :)"
             type="text"
           />
-          <button onClick={this.handleSubmit}>Send</button>
+          <button className="rc-button" onClick={this.handleSubmit}>
+            Send
+          </button>
         </div>
       </form>
     );

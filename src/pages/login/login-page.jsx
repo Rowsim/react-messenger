@@ -19,6 +19,17 @@ class LoginPage extends React.Component {
     });
   };
 
+  loginAsTestUser = () => {
+    const testGoogleProfile = {
+      googleId: "test-0"
+    };
+
+    this.props.history.push({
+      pathname: "/chat",
+      state: { googleProfile: testGoogleProfile }
+    });
+  }
+
   componentDidMount() {
     this.effect = window.VANTA.BIRDS({
       el: "#vanta-bg",
@@ -91,6 +102,9 @@ class LoginPage extends React.Component {
               onFailure={this.responseGoogleFail}
               cookiePolicy={"single_host_origin"}
             />
+            <button className="rc-button" onClick={this.loginAsTestUser}>
+              Sign in as a test user
+            </button>
           </div>
         </div>
       </div>
