@@ -7,8 +7,10 @@ const Message = props => {
     <div className="message-container">
       <img className="user-icon" src="/favicon.png" />
       <div className="message">
-        <UserCard />
-        <a className="message__username">{props.senderName}</a>
+        <button className="message__username button-link">
+          {props.senderName}
+        </button>
+        <UserCard name={props.senderName} />
         <div className="message__text">{props.text}</div>
       </div>
     </div>

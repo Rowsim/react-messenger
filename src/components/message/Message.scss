@@ -13,15 +13,22 @@
 .message {
   margin: 15px 6px;
 
+  .user-card {
+    display: none;
+  }
+
+  &__username:focus + div.user-card {
+    display: block;
+  }
+
   &__username {
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 14px;
     margin-bottom: 6px;
   }
 
   &__text {
-    font-size: 15px;
+    font-size: 16px;
     color: $main-text-colour;
-    font-weight: 400;
+    font-weight: 500;
   }
 }

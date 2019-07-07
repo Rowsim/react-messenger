@@ -1,11 +1,11 @@
 //Colours
-$main-colour: #dd7e47;
+$main-colour: rgb(221, 126, 71);
 $secondary-colour: rgb(236, 236, 236);
-$main-text-colour: #3e5869;
-$grey-text: #cacaca;
+$main-text-colour: rgb(62, 88, 106);
+$grey-text: rgb(201, 201, 201);
 $button-green: rgb(90, 160, 90);
 $button-red: rgb(187, 47, 47);
-$link-colour: #6078ff;
+$link-colour: rgb(96, 120, 255);
 
 .rc-button {
   background-color: $button-green;
@@ -13,6 +13,20 @@ $link-colour: #6078ff;
   border-style: none;
   align-self: center;
   font-weight: bold;
+  border: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+.button-link {
+  background-color: transparent;
+  color: $link-colour;
+  border-style: none;
+  font-weight: bold;
+  padding: 0;
   border: 0;
   cursor: pointer;
 

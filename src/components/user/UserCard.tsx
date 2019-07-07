@@ -8,7 +8,7 @@ const UserCard = props => {
     <div className="user-card">
       <div className="user-card-top">
         <img className="user-card__image" src="/favicon.png" />
-        <div className="user-card__name">Name</div>
+        <div className="user-card__name">{props.name}</div>
       </div>
       <div className="user-card__contact">
         <a>
