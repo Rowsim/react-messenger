@@ -1,0 +1,28 @@
+@import "../../styles/standard.scss";
+
+.message-container {
+  display: flex;
+  align-items: flex-start;
+
+  img {
+    height: 45px;
+    padding-top: 14px;
+  }
+}
+
+.message {
+  margin: 15px 6px;
+
+  &__username {
+    font-size: 13px;
+    color: $link-colour;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: $main-text-colour;
+    font-weight: 400;
+  }
+}

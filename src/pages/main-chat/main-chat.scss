@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+@import "../../styles/standard.scss";
+
 :root {
   --main-color: #dd7e47;
   --secondary-color: rgb(236, 236, 236);
@@ -9,9 +12,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: system-ui;
-  font-weight: 200;
-  color: #3e5869;
+  font-family: "Lato", sans-serif;
+  color: $main-text-colour;
 }
 
 #root {
@@ -81,22 +83,6 @@ button:hover {
 
 .rooms-list .room.active a {
   color: var(--secondary-color);
-}
-
-.message {
-  margin: 15px 6px;
-}
-
-.message .message-username {
-  font-size: 11px;
-  color: var(--main-text-color);
-  opacity: 0.9;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-.message .message-text {
-  font-size: 15px;
-  color: var(--main-text-color);
 }
 
 .help-text {

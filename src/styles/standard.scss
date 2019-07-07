@@ -4,10 +4,11 @@ $secondary-colour: rgb(236, 236, 236);
 $main-text-colour: #3e5869;
 $grey-text: #cacaca;
 $button-green: rgb(90, 160, 90);
+$button-red: rgb(187, 47, 47);
 $link-colour: #6078ff;
 
 .rc-button {
-  background: $button-green;
+  background-color: $button-green;
   color: white;
   border-style: none;
   align-self: center;
