@@ -1,4 +1,7 @@
 # react-messenger
+A Small react project making use of Pusher chatkit/channels api to allow messenging between users and in channels.
+
+
 Quick start:
 
 ```
